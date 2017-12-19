@@ -3,75 +3,50 @@ var $inputBody = $("#input-body");
 
 $("#button-save").on("click", buttonSave);
 
-onLoad()
+loadIdeas()
 
-function onLoad() {
-  setStorage();
-  populateDOM();  
-};
+console.log(parsedIdeas());
 
-
-function setStorage() {
+function loadIdeas() {
   if (localStorage.getItem("ideas") === null) {
     localStorage.setItem("ideas", ("[]"));
+  } else {
+    parsedIdeas().forEach(function (idea) {
+      renderIdea(idea.id, idea.title, idea.body, idea.quality);
+    });
   };
-  console.log(localStorage);
-};
+}
 
-function populateDOM() {
-  console.log("populate");
-  getIdeas().forEach(function (idea) {
-    makeIdeaCard(idea.id, idea.title, idea.body, idea.quality);
-    console.log(idea);
-  });
-};
-
-function buttonSave(e) {
-  e.preventDefault();
-  var newIdea = new Idea(idGenerator(), getTitleInput(), getBodyInput(), 'Swill');
-  console.log(newIdea);
-  var existingIdeas = getIdeas();
-  console.log(existingIdeas);
-  existingIdeas.push(newIdea);
-  console.log(existingIdeas);
-  localStorage.setItem('ideas', JSON.stringify(existingIdeas));
-  console.log(localStorage);
-  makeIdeaCard(newIdea.id, newIdea.title, newIdea.body, 'Swill');
-};
-
-function Idea(id, title, body, quality) {
-  this.id = parseInt(id);
-  this.title = title;
-  this.body = body;
-  this.quality = quality;
-};
-
-function getIdeas() {
+function parsedIdeas() {
   return JSON.parse(localStorage.getItem("ideas"));
 };
 
-function idGenerator() {
-  return Date.now().toString();
-};
-
-function getTitleInput() {
-  var ideaTitle = $inputTitle.val();
-  return ideaTitle;
-};
-
-function getBodyInput() {
-  var inputBody = $inputBody.val();
-  return inputBody;
-};
-
-function makeIdeaCard(id, title, body, quality) {
+function renderIdea(id, title, body, quality) {
   $('#bottom-section').prepend(`
-    <article id="` + id + `" class="idea">
-      <h1 id="idea-title" contenteditable="true">` + title + `</h1>
-      <button id="delete-idea"></button>
-      <p id="idea-text" contenteditable="true">` + body + `</p>
-      <button id="upvote-idea"></button>
-      <button id="downvote-idea"></button>
-      <p id= "quality ` + quality + `"><span>Quality:</span> <span class = "quality-in-DOM">` + quality + `</span> </p>
+    <article class="idea">
+      <h1 class="idea-title" contenteditable="true">${title}</h1>
+      <img class="idea-button delete-idea" id="delete-idea" src="assets/delete.svg">
+      <p class="idea-text" id="idea-text" contenteditable="true">${body}</p>
+      <img class="idea-button" id="upvote-idea" src="assets/upvote.svg">
+      <img class="idea-button" id="downvote-idea" src="assets/downvote.svg">
+      <h5 class= "quality ${quality}"><span>Quality:</span><span class="quality-in-DOM">${quality}</span> </h5>
+      <hr>
     </article>`);
+}
+
+function buttonSave(e) {
+  e.preventDefault();
+  var randID = Math.floor(Math.random() * 999999999);
+  var newIdea = new Idea(randID, $inputTitle.val(), $inputBody.val(), 'Swill');
+  var existingIdeas = parsedIdeas();
+  existingIdeas.push(newIdea);
+  localStorage.setItem('ideas', JSON.stringify(existingIdeas));
+  renderIdea(newIdea.id, newIdea.title, newIdea.body, 'Swill');
+};
+
+function Idea(id, title, body, quality) {
+  this.id = id;
+  this.title = title;
+  this.body = body;
+  this.quality = quality;
 };
