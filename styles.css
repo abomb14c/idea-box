@@ -1,0 +1,141 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+hr {
+  background-color: #d1d3d4;
+}
+
+.bottom-section {
+  height: 60%;
+  text-align: center;
+  width: 100%;
+}
+
+.delete-idea {
+  float: right;
+}
+
+.idea {
+  width: 60%;
+  margin: auto;
+  margin-top: 40px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.idea-header {
+  color: #00a79d;
+}
+
+.idea-button {
+  width: 33px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.idea-text {
+  color: #939598;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.idea-title {
+  bottom: 5px;
+  color: #6d6e71;
+  font-size: 30px;
+  display: inline-block;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.input-field {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  padding-left: 5px;
+  width: 100%;
+}
+
+.input-form {
+  margin: auto;
+  padding-top: 40px;
+  width: 60%;
+}
+
+.quality {
+  bottom: 15px;
+  color: #6d6e71;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 18px;
+  position: relative;
+  padding-bottom: 20px;
+  padding-left: 15px;
+}
+
+.save-button {
+  background-color: #00a79d;
+  color: #ffffff;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+.save-button:hover {
+  background-color: #045e55;
+}
+
+.search-bar {
+  font-size: 1.5em;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  padding-left: 5px;
+  width: 60%;
+}
+
+.top-section {
+  background-color: #e5f3f2;
+  display: fixed;
+  height: 40%;
+  width: 100%;
+}
+
+.title {
+  color: #6d6e71;
+  font-family: 'Roboto Slab', serif;
+  font-size: 54px;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    height: 100%;
+  }
+  html {
+    height: 100%;
+  }
+  .idea-body {
+    height: 100px;
+  }
+  .input-form {
+    padding-top: 20px;
+    width: 85%;
+  }
+  .title {
+    font-size: 34px;
+  }
+  .top-section {
+    height: 50%;
+  }
+}
