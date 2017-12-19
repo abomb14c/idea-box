@@ -17,6 +17,8 @@ function loadIdeas() {
   };
 }
 
+aaaaaaaaaaaaaaaa
+
 function parsedIdeas() {
   return JSON.parse(localStorage.getItem("ideas"));
 };
