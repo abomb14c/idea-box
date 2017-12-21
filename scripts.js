@@ -61,18 +61,17 @@ function Idea(id, title, body, quality, count) {
 
 function deleteButton() {
   deleteHTML();
-  deleteButtonLocalStorage();
+  deleteLocalStorage();
 }
 
 function deleteHTML() {
   $(event.target).closest("article").remove();
 }
 
-function deleteButtonLocalStorage() {
+function deleteLocalStorage() {
   var existingIdeas = parsedIdeas();
-  var ideaID = parseInt($(event.target).closest('article').attr("id"));
+  var ideaID = ($(event.target).closest('article').attr("id"));
   existingIdeas.forEach(function (idea, index) {
-
     if (idea.id == ideaID) {
       existingIdeas.splice(index, 1);
     }
@@ -80,18 +79,17 @@ function deleteButtonLocalStorage() {
   localStorage.setItem('ideas', JSON.stringify(existingIdeas));
 }
 
-var arrayQuality = ["swill", "plausible", "genius"];
+var arrayQuality = ["Swill", "Plausible", "Genius"];
 
 function upVote() {
   var article = $(this).closest("article");
   var existingIdeas = parsedIdeas();
   var ideaID = parseInt($(event.target).closest('article').attr("id"));
-
   existingIdeas.forEach(function (idea, index) {
     if (idea.id == ideaID) {
       if (idea.count < 2) {
         idea.count++
-          existingIdeas[index].quality = arrayQuality[idea.count];
+        idea.quality = arrayQuality[idea.count];
         article.find("#span-quality").text(arrayQuality[idea.count])
       }
     }
@@ -118,7 +116,7 @@ function downVote() {
 
 function updateStorage() {
   var article = $(event.target).closest("article");
-  var ideaID = parseInt(article.attr('id'))
+  var ideaID = article.attr('id')
   var ideaTitle = article.find("#idea-title").val();
   var ideaBody = article.find("#idea-text").val();
   var existingIdeas = parsedIdeas();
@@ -126,8 +124,8 @@ function updateStorage() {
   existingIdeas.forEach(function (idea, index) {
 
     if (idea.id == ideaID) {
-      existingIdeas[index].title = ideaTitle;
-      existingIdeas[index].body = ideaBody;
+      idea.title = ideaTitle;
+      idea.body = ideaBody;
     }
     localStorage.setItem('ideas', JSON.stringify(existingIdeas));
   })
@@ -135,21 +133,17 @@ function updateStorage() {
 
 function enterKey(event) {
   if (event.keyCode === 13) {
-    console.log("enter");
     event.preventDefault();
   }
 }
 
 function search() {
-  var g = $("#search-field").val().toLowerCase();
+  var searchValue = $("#search-field").val().toLowerCase();
   $(".idea-title").each(function () {
-    var s = $(this).text().toLowerCase();
-    if (s.indexOf(g) != -1) {
-      console.log("found");
+    var ideaTitles = $(this).text().toLowerCase();
+    if (ideaTitles.indexOf(searchValue) != -1) {
       $(this).parent().show();
-      console.log(this);
     } else {
-      console.log("not found");
       $(this).parent().hide();
     }
   });
