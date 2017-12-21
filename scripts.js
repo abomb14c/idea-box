@@ -25,7 +25,7 @@ function loadIdeas() {
 }
 
 function parsedIdeas() {
-  return JSON.parse(localStorage.getItem("ideas"));
+ return JSON.parse(localStorage.getItem("ideas"));
 };
 
 function renderIdea(id, title, body, quality) {

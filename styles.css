@@ -25,7 +25,7 @@ hr {
 }
 
 .delete-idea {
-  background: none;
+  background:none;
   background-image: url('assets/delete.svg');
   float: right;
 }
@@ -35,7 +35,7 @@ hr {
 }
 
 .downvote-idea {
-  background: none;
+  background:none;
   background-image: url(assets/downvote.svg);
 }
 
@@ -104,7 +104,7 @@ hr {
 }
 
 .quality {
-  bottom: 15px;
+  bottom: 10px;
   color: #6d6e71;
   display: inline-block;
   font-weight: 700;
@@ -140,7 +140,7 @@ hr {
 }
 
 .upvote-idea {
-  background: none;
+  background:none;
   background-image: url('assets/upvote.svg');
 }
 
@@ -152,28 +152,37 @@ hr {
   body {
     height: 100%;
   }
+
   html {
     height: 100%;
   }
+
   .idea {
     width: 90%;
   }
+
   .idea-body {
     height: 100px;
     text-align: top;
   }
+
   .input-forms {
     padding-top: 5%;
     width: 90%;
+
   }
-  .input-field {
+   
+   .input-field {
     border: gray solid 1px;
-  }
+
+   }
   .title {
     font-size: 34px;
     padding-bottom: 5%;
   }
+
   .top-section {
     height: 50%;
   }
+
 }
