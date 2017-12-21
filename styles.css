@@ -25,7 +25,22 @@ hr {
 }
 
 .delete-idea {
+  background:none;
+  background-image: url('assets/delete.svg');
   float: right;
+}
+
+.delete-idea:hover {
+  background-image: url('assets/delete-hover.svg');
+}
+
+.downvote-idea {
+  background:none;
+  background-image: url(assets/downvote.svg);
+}
+
+.downvote-idea:hover {
+  background-image: url('assets/downvote-hover.svg');
 }
 
 .idea {
@@ -36,29 +51,43 @@ hr {
   vertical-align: top;
 }
 
+.idea-body {
+  height: 1.5em;
+  resize: none;
+}
+
+.idea-button {
+  height: 33px;
+  width: 33px;
+  margin: 5px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  border: none;
+}
+
 .idea-header {
   color: #00a79d;
 }
 
-.idea-button {
-  width: 33px;
-  margin: 5px;
-  display: inline-block;
-}
-
 .idea-text {
+  border: none;
   color: #939598;
-  font-size: 20px;
-  padding-bottom: 20px;
+  font-size: 1em;
+  margin-bottom: 5px;
+  resize: none;
+  width: 95%;
 }
 
 .idea-title {
   bottom: 5px;
+  border: none;
   color: #6d6e71;
-  font-size: 30px;
+  font-size: 1.5em;
   display: inline-block;
-  padding-bottom: 5px;
   position: relative;
+  resize: none;
+  width: 80%;
+  height: 5%;
 }
 
 .input-field {
@@ -68,14 +97,14 @@ hr {
   width: 100%;
 }
 
-.input-form {
+.input-forms {
   margin: auto;
-  padding-top: 40px;
+  padding-top: 30px;
   width: 60%;
 }
 
 .quality {
-  bottom: 15px;
+  bottom: 10px;
   color: #6d6e71;
   display: inline-block;
   font-weight: 700;
@@ -96,18 +125,9 @@ hr {
   background-color: #045e55;
 }
 
-.search-bar {
-  font-size: 1.5em;
-  margin-bottom: 50px;
-  margin-top: 20px;
-  padding-left: 5px;
-  width: 60%;
-}
-
 .top-section {
   background-color: #e5f3f2;
-  display: fixed;
-  height: 40%;
+  height: 300px;
   width: 100%;
 }
 
@@ -116,26 +136,52 @@ hr {
   font-family: 'Roboto Slab', serif;
   font-size: 54px;
   text-align: center;
+  padding-bottom: 20px;
+}
+
+.upvote-idea {
+  background:none;
+  background-image: url('assets/upvote.svg');
+}
+
+.upvote-idea:hover {
+  background-image: url('assets/upvote-hover.svg');
 }
 
 @media screen and (max-width: 400px) {
   body {
     height: 100%;
   }
+
   html {
     height: 100%;
   }
+
+  .idea {
+    width: 90%;
+  }
+
   .idea-body {
     height: 100px;
+    text-align: top;
   }
-  .input-form {
-    padding-top: 20px;
-    width: 85%;
+
+  .input-forms {
+    padding-top: 5%;
+    width: 90%;
   }
+   
+   .input-field {
+    border: gray solid 1px;
+
+   }
   .title {
     font-size: 34px;
+    padding-bottom: 5%;
   }
+
   .top-section {
     height: 50%;
   }
+
 }
